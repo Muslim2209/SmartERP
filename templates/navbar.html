@@ -1,0 +1,324 @@
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#2b3744;">
+  <a class="navbar-brand" href="{% url 'dashboard:dashboard' %}"> SmartERP </a>
+  <!--Toggle Collapse Button-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+      class="navbar-toggler-icon"></span></button>
+  <!--Division for navbar-->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!--UL for links-->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-Itemdropdown"><a class="nav-link category" href="#" id="navbarDropdown"
+                                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <strong> Главное </strong> </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="container">
+            <div class="row">
+              <!--Row 1-->
+              <div class="col-md-3">
+                <!--Column 1-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header">Дашборд</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Дашборд продаж</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Финансовый дашборд</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Дашборд визитов</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Избранное</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Дашборд</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 2-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header">Админ</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Филиал</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Роли</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Пользователи</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Все пользователи</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Запросы на доступ к действиям</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 3-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header">Настройки</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Настройки системы</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Настройка шагов визита</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Список лицензий</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Лог системы Smartup</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Прибыль и убыток (P&L) (beta) настройка счетов</a>
+                  </li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Ручная генерация кэшированных данных</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Настройки ограничения просмотра информации по
+                    датам</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 4-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header">Отчёты</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Отчёты</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-Itemdropdown"><a class="nav-link  category" href="#" id="navbarDropdown"
+                                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <strong> Продажи </strong> </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="container">
+            <div class="row">
+              <!--Row 1-->
+              <div class="col-md-3">
+                <!--Column 1-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Визиты</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Визиты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Архив визитов</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Отменённые визиты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Отслеживание пользователей</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Местоположение пользователей</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Фильтр фото отчетов</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 2-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Заказы</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Заказы</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Архив заказов</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Удалённые заказы</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Возврат/Закуп</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Возврат тары</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 3-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Отчёты по продажам</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Конструктор отчетов по продажам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Общий отчет по продажам (филиалы)</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Отчет по основным показателям</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Отчёт по возвратам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Не продаваемые продукции</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 4-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Отчёты по визитам</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Детальный отчёт по визитам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Автотрекинг</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Остатки продукции у контрагента</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Не посещённые контрагенты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Анализ маршрута</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-Itemdropdown"><a class="nav-link category m-auto p-auto" href="#" id="navbarDropdown"
+                                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <strong> Склад </strong> </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="container">
+            <div class="row">
+              <!--Row 1-->
+              <div class="col-md-3">
+                <!--Column 1-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Склад</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Склад</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Приход на склад</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Возврат поставщику</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Остатки</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Остатки продукции по складам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Списания</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Корректировка</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Остатки тары</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Движения оборотной тары</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 2-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Перемещение</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Перемещения</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Межфилиальные перемещения: Отправка</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Межфилиальные перемещения: Приём</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 3-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Дополнительно</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Логистика</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Шаблон приходных цен</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 4-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Отчёты по складу</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Общий отчёт по складам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Сводный отчёт по складам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Расчет остатков по продукциям</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Перемещения</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Отчет по складским приходам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Остатки продукции у контрагента</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-Itemdropdown"><a class="nav-link category" href="#" id="navbarDropdown"
+                                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <strong> Финансы </strong> </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="container">
+            <div class="row">
+              <!--Row 1-->
+              <div class="col-md-3">
+                <!--Column 1-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Взаиморасчеты</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Взаиморасчеты с клиентами</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Оплаты от контрагентов</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Запросы об оплате</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Взаиморасчёты с поставщиками</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Оплаты поставщикам</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 2-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Финансовые операции</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Перекидка между кассами</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Приход в кассу ( ПКО )</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Расход с кассы ( РКО )</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Перекидка аванса клиентов / поставщиков</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Кассы организации</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Валюты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Банковская операция</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Конвертация</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 3-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Бухгалтерия</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Контракты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Ручная операция</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">План счетов</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Счет-фактура контрагента</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Вид движение</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Переоценка валюты</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 4-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Финансовые отчёты</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Прибыль и убыток (P&L)</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Денежный поток</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Акт-сверки</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Обороты по контрагентам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Отчёт по должникам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Оплаты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">ОСВ</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">ОСВ по счету</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Проверка овердрафта</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-Itemdropdown"><a class="nav-link category" href="#" id="navbarDropdown"
+                                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <strong> Справочник </strong> </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="container">
+            <div class="row">
+              <!--Row 1-->
+              <div class="col-md-3">
+                <!--Column 1-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Основные справочники</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'product:list' %}">Продукция</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продуктовые направления</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Сектор</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Цены</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Типы оплат</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Скидки/Наценки</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Соотношения цен</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Цены тары</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 2-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Клиентская база</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'customer:list' %}">Контрагенты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Характеристики контрагента</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Контакты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Характеристики контакта</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Рабочие места</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продавцы</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 3-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Дополнительные справочники</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Услуги</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Направления услуг</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Автотранспорт</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Типы фото отчёта</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Комментарии</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Группы опросов</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Двойной визит</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Группы двойных визитов</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 4-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Продуктовые корзины</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продуктовые корзины</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продуктовые корзины по рабочим местам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продуктовые корзины по контрагентам</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <!--Search-->
+
+  </div>
+</nav>
