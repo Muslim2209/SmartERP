@@ -81,3 +81,12 @@ class CONSTANTS:
                 'choices': [{"name": y, "code": x} for x, y in CHOICES],
                 'default': DEFAULT
             }
+
+    class WAREHOUSE:
+        class INPUT_STATUS:
+            DRAFT = 'DRAFT'
+            ACCEPTED = 'ACCEPTED'
+            CHOICES = (
+                (DRAFT, _('Draft')),
+                (ACCEPTED, _('Accepted')),
+            )

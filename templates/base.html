@@ -9,7 +9,7 @@
   <title>SmartERP</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
@@ -32,4 +32,29 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 <script src="{% static 'js/scripts.js' %}"></script>
+
+<script>jQuery(document).ready(function ($) {
+    $(".click-row").dblclick(function () {
+        window.location = $(this).data("href");
+    });
+
+    $(".save_top").click(function () {
+        $(".save_bottom").click();
+    });
+
+    $('#selectAll').click(function (e) {
+        var table = $(e.target).closest('table');
+        $('td input:checkbox', table).prop('checked', this.checked);
+    });
+
+    $('.group_id').click(e => alert($(e.currentTarget).data('val')));
+
+
+    {% block dom_ready %}
+
+    {% endblock %}
+
+});
+</script>
+
 </html>

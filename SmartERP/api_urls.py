@@ -1,9 +1,20 @@
-from django.urls import include, path
-from django.views.generic import TemplateView
-from rest_framework.schemas import get_schema_view
+from django.urls import include, path, re_path
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework.permissions import AllowAny
+
+schema_view = get_schema_view(
+    openapi.Info(title="SmartERP",
+                 default_version='v1.0.0',
+                 description="API for SmartERP",
+                 # terms_of_service="https://www.google.com/policies/terms/",
+                 # contact=openapi.Contact(email="contact@snippets.local"),
+                 # license=openapi.License(name="BSD License")
+                 ), public=True, permission_classes=(AllowAny,)
+)
 
 urlpatterns = [
-    path('category/', include('category.api.urls'), name='api_category'),
+    # path('category/', include('category.api.urls'), name='api_category'),
     path('company/', include('company.api.urls'), name='api_company'),
     path('customer/', include('customer.api.urls'), name='api_customer'),
     path('dashboard', include('dashboard.api.urls'), name='api_dashboard'),
@@ -16,10 +27,7 @@ urlpatterns = [
     path('reference/', include('reference.api.urls'), name='api_reference'),
     path('unit/', include('unit.api.urls'), name='api_unit'),
     path('warehouse/', include('warehouse.api.urls'), name='api_warehouse'),
-    path('openapi/', get_schema_view(title="SmartERP", description="API for SmartERP",
-                                     version="1.0.0"), name='openapi-schema'),
-    path('swagger/', TemplateView.as_view(template_name='swagger/swagger-ui.html',
-                                          extra_context={'schema_url': 'openapi-schema'}), name='swagger-ui'),
-    path('redoc/', TemplateView.as_view(template_name='swagger/redoc.html',
-                                        extra_context={'schema_url': 'openapi-schema'}), name='redoc'),
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

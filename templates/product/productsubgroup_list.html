@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+  <br>
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <h6>Product Groups</h6>
+        <div class="row">
+          <div class="col-md-4">
+            <a class="btn btn-success" href="{% url 'product:group_sub_add' '1' %}">Add</a>
+            <a class="btn btn-success" href="{% url 'product:group_list' %}">Close</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card-body">
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+          <tr>
+            <th><input type="checkbox" id="selectall"/></th>
+            <th scope="col">id</th>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Group</th>
+            <th scope="col">Number</th>
+            <th scope="col">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for group in subgroup_list %}
+            <tr class="click-row" data-href="{% url 'product:group_sub_edit' group.id %}" data-toggle="collapse"
+                data-target="#collapse_{{ group.id }}">
+              <td><input type="checkbox" class="singlechkbox" name="username" value="{{ group.id }}"/></td>
+              <td class="group_id" data-val="{{ group.id }}">{{ group.id }}</td>
+              <td>{{ group.code|default_if_none:"" }}</td>
+              <td>{{ group.name }}</td>
+              <td>{{ group.group }}</td>
+              <td>{{ group.number|default_if_none:"" }}</td>
+              <td>{% if group.is_active %}Active{% else %}Inactive{% endif %}</td>
+            </tr>
+            <tr>
+              <td id="collapse_{{ group.id }}" class="collapse out" colspan="5">
+
+                <a href="{% url 'product:group_sub_edit' group.id %}" class="btn btn-outline-dark btn-sm" role="button">
+                  Edit
+                </a>
+                <a href="{% url 'product:group_delete' group.id %}" class="btn btn-outline-dark btn-sm"
+                   role="button" data-toggle="modal" data-target="#deleteConfirmModal">
+                  Delete
+                </a>
+                <a href="" class="btn btn-outline-dark btn-sm" role="button">
+                  Products
+                </a>
+              </td>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog"
+                 aria-labelledby="deleteConfirmModalLabel"
+                 aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                  <div class="modal-body">
+                    Are you sure?
+                  </div>
+                  <div class="modal-footer">
+                    <form method="POST" action="{% url 'product:group_delete' group.id %}">
+                      {% csrf_token %}
+                      <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal end -->
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

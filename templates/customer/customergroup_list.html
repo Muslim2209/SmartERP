@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+  <br>
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <h6>Customer groups</h6>
+        <div class="row">
+          <div class="col-md-4">
+            <a class="btn btn-success" href="{% url 'customer:group_add' %}">Add</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card-body">
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>
+              <input type="checkbox" id="selectAll"/>
+            </th>
+            <th scope="col">id</th>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Number</th>
+            <th scope="col">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for group in customergroup_list %}
+            <tr class="click-row" data-href="{% url 'customer:group_edit' group.id %}">
+              <td>
+                <input type="checkbox" id="{{ product.id }}"/>
+              </td>
+              <td>{{ group.id }}</td>
+              <td>{{ group.code }}</td>
+              <td>{{ group.name }}</td>
+              <td>{{ group.number|default_if_none:"" }}</td>
+              <td>{% if group.is_active %}Active{% else %}Inactive{% endif %}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

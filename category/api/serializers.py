@@ -1,15 +1,9 @@
 from rest_framework import serializers
 
-from category.models import Category, Group
+from category.models import Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = '__all__'
-
-
-class GroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Group
         fields = '__all__'

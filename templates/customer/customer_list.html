@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+  <br>
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <h6>Customers</h6>
+        <div class="row">
+          <div class="col-md-4">
+            <a class="btn btn-success" href="{% url 'customer:add' %}">Add</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card-body">
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>
+              <input type="checkbox" id="selectAll"/>
+            </th>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">User</th>
+            <th scope="col">Category</th>
+            <th scope="col">Group</th>
+            <th scope="col">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for customer in customer_list %}
+            <tr class="click-row" data-href="{% url 'customer:edit' customer.id %}">
+              <td>
+                <input type="checkbox" id="{{ product.id }}"/>
+              </td>
+              <td>{{ customer.code|default_if_none:"" }}</td>
+              <td>{{ customer.name }}</td>
+              <td>{{ customer.user|default_if_none:"" }}</td>
+              <td>{{ customer.category|default_if_none:"" }}</td>
+              <td>{{ customer.group|default_if_none:"" }}</td>
+              <td>{% if customer.is_active %}Active{% else %}Inactive{% endif %}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

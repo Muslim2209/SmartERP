@@ -1,27 +1,68 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from product.forms import ProductAddForm
-from product.models import Product
-
-
-def products(request):
-    products = Product.objects.all()
-    context = {
-        'products': products
-    }
-    return render(request, 'product/products.html', context)
+from product.forms import ProductForm, ProductGroupForm, ProductSubGroupForm
+from product.models import Product, ProductGroup, ProductSubGroup
 
 
-def product_add(request):
-    if request.method == 'POST':
-        form = ProductAddForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-        return HttpResponseRedirect(reverse('product:list'))
+class ProductGroupListView(ListView):
+    model = ProductGroup
 
-    else:
-        form = ProductAddForm()
 
-    return render(request, 'product/product_add.html', {'form': form})
+class ProductGroupAddView(CreateView):
+    model = ProductGroup
+    form_class = ProductGroupForm
+    success_url = reverse_lazy('product:group_list')
+
+
+class ProductGroupUpdateView(UpdateView):
+    model = ProductGroup
+    form_class = ProductGroupForm
+    success_url = reverse_lazy('product:group_list')
+
+
+class ProductGroupDeleteView(DeleteView):
+    model = ProductGroup
+    success_url = reverse_lazy('product:group_list')
+
+
+class ProductSubGroupListView(ListView):
+    model = ProductSubGroup
+
+    def get_context_data(self, *args, object_list=None, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['subgroup_list'] = ProductSubGroup.objects.filter(group_id=self.kwargs.get('pk'))
+        return context
+
+
+class ProductSubGroupAddView(CreateView):
+    model = ProductSubGroup
+    form_class = ProductSubGroupForm
+    success_url = reverse_lazy('product:group_sub_list')
+
+
+class ProductSubGroupUpdateView(UpdateView):
+    model = ProductSubGroup
+    form_class = ProductSubGroupForm
+    success_url = reverse_lazy('product:group_sub_list')
+
+
+class ProductSubGroupDeleteView(DeleteView):
+    model = ProductSubGroup
+    success_url = reverse_lazy('product:group_sub_list')
+
+
+class ProductListView(ListView):
+    model = Product
+
+
+class ProductAddView(CreateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('product:list')
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('product:list')

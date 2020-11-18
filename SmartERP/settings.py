@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'SmartERP.middlewares.users.UserMiddleware',
 ]
 
 ROOT_URLCONF = 'SmartERP.urls'

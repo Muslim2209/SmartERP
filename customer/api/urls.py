@@ -1,10 +1,14 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
-from customer.views import customer_list, customer_detail
+from customer.api.views import CustomerViewSet
 
 app_name = 'api_customer'
 
+router = routers.DefaultRouter()
+
+router.register('', CustomerViewSet)
+
 urlpatterns = [
-    path('', customer_list, name='customer_list'),
-    path('<int:pk>/', customer_detail, name='customer_detail'),
+    path('', include(router.urls)),
 ]

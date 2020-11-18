@@ -139,8 +139,10 @@
                 <ul class="nav flex-column">
                   <li class="nav-item"><span class="nav-header" href="#">Склад</span></li>
                   <li class="nav-divider"></li>
-                  <li class="nav-item"><a class="nav-link i" href="#">Склад</a></li>
-                  <li class="nav-item"><a class="nav-link i" href="#">Приход на склад</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'warehouse:list' %}">Склад</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link i" href="{% url 'warehouse:input_list' %}">Приход на склад</a>
+                  </li>
                   <li class="nav-item"><a class="nav-link i" href="#">Возврат поставщику</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Остатки</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Остатки продукции по складам</a></li>
@@ -215,7 +217,7 @@
                   <li class="nav-item"><a class="nav-link i" href="#">Расход с кассы ( РКО )</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Перекидка аванса клиентов / поставщиков</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Кассы организации</a></li>
-                  <li class="nav-item"><a class="nav-link i" href="#">Валюты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'price:currency_list' %}">Валюты</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Банковская операция</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Конвертация</a></li>
                 </ul>
@@ -266,9 +268,10 @@
                   <li class="nav-item"><span class="nav-header" href="#">Основные справочники</span></li>
                   <li class="nav-divider"></li>
                   <li class="nav-item"><a class="nav-link i" href="{% url 'product:list' %}">Продукция</a></li>
-                  <li class="nav-item"><a class="nav-link i" href="#">Продуктовые направления</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'product:group_list' %}">
+                    Продуктовые направления</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Сектор</a></li>
-                  <li class="nav-item"><a class="nav-link i" href="#">Цены</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'price:list' %}">Цены</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Типы оплат</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Скидки/Наценки</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Соотношения цен</a></li>
@@ -281,7 +284,8 @@
                   <li class="nav-item"><span class="nav-header" href="#">Клиентская база</span></li>
                   <li class="nav-divider"></li>
                   <li class="nav-item"><a class="nav-link i" href="{% url 'customer:list' %}">Контрагенты</a></li>
-                  <li class="nav-item"><a class="nav-link i" href="#">Характеристики контрагента</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'customer:group_list' %}">Характеристики
+                    контрагента</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Контакты</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Характеристики контакта</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Рабочие места</a></li>

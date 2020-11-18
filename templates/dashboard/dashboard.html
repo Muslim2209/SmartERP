@@ -19,7 +19,7 @@
                     </tr>
                     {% for customer in customers %}
                         <tr>
-                            <td><a href="{% url 'customer:detail' customer.id %}">{{ customer.name }}</a></td>
+                            <td><a href="{% url 'customer:edit' customer.id %}">{{ customer.name }}</a></td>
                             <td>{{ customer.info.phone_number }}</td>
                         </tr>
                     {% endfor %}
