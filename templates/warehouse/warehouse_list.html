@@ -18,6 +18,7 @@
             <th>
               <input type="checkbox" id="selectAll"/>
             </th>
+            <th scope="col">id</th>
             <th scope="col">Code</th>
             <th scope="col">Name</th>
             <th scope="col">Accountable</th>
@@ -28,8 +29,9 @@
           {% for warehouse in warehouse_list %}
             <tr class="click-row" data-href="{% url 'warehouse:edit' warehouse.id %}">
               <td>
-                <input type="checkbox" id="{{ product.id }}"/>
+                <input type="checkbox" id="{{ warehouse.id }}"/>
               </td>
+              <td>{{ warehouse.id }}</td>
               <td>{{ warehouse.code|default_if_none:"" }}</td>
               <td>{{ warehouse.name }}</td>
               <td>{{ warehouse.accountable }}</td>

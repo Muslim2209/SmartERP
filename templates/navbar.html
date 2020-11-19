@@ -144,8 +144,12 @@
                     <a class="nav-link i" href="{% url 'warehouse:input_list' %}">Приход на склад</a>
                   </li>
                   <li class="nav-item"><a class="nav-link i" href="#">Возврат поставщику</a></li>
-                  <li class="nav-item"><a class="nav-link i" href="#">Остатки</a></li>
-                  <li class="nav-item"><a class="nav-link i" href="#">Остатки продукции по складам</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link i" href="{% url 'warehouse:balance' %}">Остатки</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link i" href="{% url 'warehouse:balance' %}">Остатки продукции по складам</a>
+                  </li>
                   <li class="nav-item"><a class="nav-link i" href="#">Списания</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Корректировка</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Остатки тары</a></li>

@@ -1,7 +1,7 @@
 from django.urls import path
 
 from warehouse.views import WarehouseListView, WarehouseUpdateView, WarehouseAddView, WarehouseInputListView, \
-    WarehouseInputUpdateView, WarehouseInputAddView, WarehouseRemainListView
+    WarehouseInputUpdateView, WarehouseInputAddView, WarehouseBalanceListView
 
 app_name = 'warehouse'
 
@@ -14,5 +14,5 @@ urlpatterns = [
     path('input/<int:pk>/', WarehouseInputUpdateView.as_view(), name='input_edit'),
     path('input/add/', WarehouseInputAddView.as_view(), name='input_add'),
 
-    path('remain/', WarehouseRemainListView.as_view(), name='remain'),
+    path('balance/', WarehouseBalanceListView.as_view(), name='balance'),
 ]

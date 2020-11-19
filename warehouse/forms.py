@@ -1,6 +1,6 @@
 from django import forms
 
-from warehouse.models import Warehouse, WarehouseInput, Remain, InputProduct
+from warehouse.models import Warehouse, WarehouseInput, Balance, InputProduct
 
 
 class WarehouseForm(forms.ModelForm):
@@ -24,7 +24,7 @@ class InputProductForm(forms.ModelForm):
 InputProductFormset = forms.inlineformset_factory(WarehouseInput, InputProduct, form=InputProductForm, extra=1)
 
 
-class WarehouseRemainForm(forms.ModelForm):
+class WarehouseBalanceForm(forms.ModelForm):
     class Meta:
-        model = Remain
+        model = Balance
         fields = '__all__'

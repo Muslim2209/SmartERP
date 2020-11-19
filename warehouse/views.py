@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView
 
 from warehouse.forms import WarehouseForm, InputProductFormset
-from warehouse.models import Warehouse, WarehouseInput, Remain
+from warehouse.models import Warehouse, WarehouseInput, Balance
 
 
 class WarehouseListView(ListView):
@@ -76,5 +76,10 @@ class WarehouseInputUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class WarehouseRemainListView(ListView):
-    model = Remain
+class WarehouseBalanceListView(ListView):
+    model = Balance
+
+    def get_context_data(self, *args, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['balance_list'] = Balance.objects.all()
+        return context

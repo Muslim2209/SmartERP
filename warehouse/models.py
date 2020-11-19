@@ -33,7 +33,7 @@ class WarehouseInput(models.Model):
 class InputProduct(models.Model):
     product = models.ForeignKey('product.Product', on_delete=models.PROTECT, related_name='inputs')
     quantity = models.IntegerField()
-    price = models.FloatField()
+    price = models.DecimalField(decimal_places=4, max_digits=16)
     expire_date = models.DateField(null=True, blank=True)
     wh_input = models.ForeignKey('WarehouseInput', on_delete=models.PROTECT, related_name='products')
 
@@ -41,12 +41,24 @@ class InputProduct(models.Model):
         return f'{self.product.name} - {self.quantity} - {self.wh_input.warehouse.name}'
 
 
-class Remain(models.Model):
-    amount = models.IntegerField()
-    product = models.ForeignKey('product.Product', on_delete=models.PROTECT, related_name='remains')
-    warehouse = models.ForeignKey('Warehouse', on_delete=models.PROTECT, related_name='remains')
+class ProductOut(models.Model):
+    product = models.ForeignKey('product.Product', on_delete=models.PROTECT, related_name='outs')
+    quantity = models.IntegerField()
+    price = models.DecimalField(decimal_places=4, max_digits=16)
+    order = models.ForeignKey('order.OrderItem', on_delete=models.PROTECT, related_name='outs')
+
+    def __str__(self):
+        return f'{self.product.name} - {self.order.amount} - {self.order.price}'
+
+
+class Balance(models.Model):
+    # amount = models.IntegerField()
+    # product = models.ForeignKey('product.Product', on_delete=models.PROTECT, related_name='remains')
+    # warehouse = models.ForeignKey('Warehouse', on_delete=models.PROTECT, related_name='remains')
+    income = models.ForeignKey('InputProduct', on_delete=models.PROTECT, null=True, blank=True)
+    outgo = models.ForeignKey('ProductOut', on_delete=models.PROTECT, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.product.name} - {self.amount}pcs in {self.warehouse.name}'
+        return f'{self.income} - {self.outgo}'

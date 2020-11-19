@@ -37,7 +37,7 @@
               <td>{{ input.warehouse }}</td>
               <td>{{ input.created_date }}</td>
               <td>{{ input.note|default_if_none:"" }}</td>
-              <td>{% if input.is_active %}Active{% else %}Inactive{% endif %}</td>
+              <td>{{ input.status }}</td>
             </tr>
           {% endfor %}
           </tbody>
