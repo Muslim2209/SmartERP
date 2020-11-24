@@ -90,3 +90,18 @@ class CONSTANTS:
                 (DRAFT, _('Draft')),
                 (ACCEPTED, _('Accepted')),
             )
+
+    class PRODUCT:
+        class TRANSACTION:
+            class TYPE:
+                SOLD = 'SOLD'
+                BOOKED = 'BOOKED'
+                NEW = 'NEW'
+                ARRIVED = 'ARRIVED'
+
+                CHOICES = (
+                    (SOLD, _('Sold')),
+                    (BOOKED, _('Booked')),
+                    (NEW, _('New')),
+                    (ARRIVED, _('Arrived')),
+                )

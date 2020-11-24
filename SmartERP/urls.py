@@ -18,7 +18,7 @@ urlpatterns = [
     path('erp/product/', include('product.urls'), name='product'),
     path('erp/reference/', include('reference.urls'), name='reference'),
     path('erp/unit/', include('unit.urls'), name='unit'),
-    path('erp/warehouse/', include('warehouse.urls'), name='warehouse'),
+    path('erp/wh/', include('warehouse.urls'), name='warehouse'),
     path('erp/dashboard/', include('dashboard.urls'), name='dashboard'),
     path('', include(api_urls), name='api'),
 ]

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+  <br>
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <h6>Unit</h6>
+        <div class="row">
+          <div class="col-md-4">
+            <a class="btn btn-primary btn-group-vertical save_top">Save</a>
+            <a class="btn btn-default btn-default btn-group-vertical" href="{% url 'unit:list' %}">Close</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card-body">
+        <form action="" method="post" class="form-group-lg">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Save" class="save_bottom" hidden>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

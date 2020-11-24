@@ -1,6 +1,7 @@
 from django import forms
+from django.forms import formset_factory
 
-from warehouse.models import Warehouse, WarehouseInput, Balance, InputProduct
+from warehouse.models import *
 
 
 class WarehouseForm(forms.ModelForm):
@@ -9,22 +10,33 @@ class WarehouseForm(forms.ModelForm):
         fields = '__all__'
 
 
-class WarehouseInputForm(forms.ModelForm):
+class StockForm(forms.ModelForm):
     class Meta:
-        model = WarehouseInput
+        model = Stock
         fields = '__all__'
 
 
-class InputProductForm(forms.ModelForm):
+# StockFormSet = formset_factory(StockForm)
+
+
+class ProductTransactionForm(forms.ModelForm):
     class Meta:
-        model = InputProduct
+        model = ProductTransaction
         fields = '__all__'
 
 
-InputProductFormset = forms.inlineformset_factory(WarehouseInput, InputProduct, form=InputProductForm, extra=1)
-
-
-class WarehouseBalanceForm(forms.ModelForm):
+class TransactionItemForm(forms.ModelForm):
     class Meta:
-        model = Balance
+        model = TransactionItem
         fields = '__all__'
+
+
+ProductTransactionFormset = forms.inlineformset_factory(ProductTransaction, TransactionItem,
+                                                        fields=['product', 'price', 'quantity'],
+                                                        form=TransactionItemForm,
+                                                        extra=1)
+
+# class WarehouseBalanceForm(forms.ModelForm):
+#     class Meta:
+#         model = Balance
+#         fields = '__all__'

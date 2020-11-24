@@ -141,14 +141,14 @@
                   <li class="nav-divider"></li>
                   <li class="nav-item"><a class="nav-link i" href="{% url 'warehouse:list' %}">Склад</a></li>
                   <li class="nav-item">
-                    <a class="nav-link i" href="{% url 'warehouse:input_list' %}">Приход на склад</a>
+                    <a class="nav-link i" href="{% url 'warehouse:stock_input_list' %}">Приход на склад</a>
                   </li>
                   <li class="nav-item"><a class="nav-link i" href="#">Возврат поставщику</a></li>
                   <li class="nav-item">
-                    <a class="nav-link i" href="{% url 'warehouse:balance' %}">Остатки</a>
+                    <a class="nav-link i" href="{% url 'warehouse:stock_list' %}">Остатки</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link i" href="{% url 'warehouse:balance' %}">Остатки продукции по складам</a>
+                    <a class="nav-link i" href="{% url 'warehouse:stock_list' %}">Остатки продукции по складам</a>
                   </li>
                   <li class="nav-item"><a class="nav-link i" href="#">Списания</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Корректировка</a></li>
@@ -276,6 +276,73 @@
                     Продуктовые направления</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Сектор</a></li>
                   <li class="nav-item"><a class="nav-link i" href="{% url 'price:list' %}">Цены</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Типы оплат</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Скидки/Наценки</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Соотношения цен</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Цены тары</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 2-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Клиентская база</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'customer:list' %}">Контрагенты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'customer:group_list' %}">Характеристики
+                    контрагента</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Контакты</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Характеристики контакта</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Рабочие места</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продавцы</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 3-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Дополнительные справочники</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Услуги</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Направления услуг</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Автотранспорт</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Типы фото отчёта</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Комментарии</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Группы опросов</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Двойной визит</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Группы двойных визитов</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <!--Column 4-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#">Продуктовые корзины</span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продуктовые корзины</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продуктовые корзины по рабочим местам</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Продуктовые корзины по контрагентам</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-Itemdropdown"><a class="nav-link category" href="#" id="navbarDropdown"
+                                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <strong> Другие </strong> </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="container">
+            <div class="row">
+              <!--Row 1-->
+              <div class="col-md-3">
+                <!--Column 1-->
+                <ul class="nav flex-column">
+                  <li class="nav-item"><span class="nav-header" href="#"> Справочник </span></li>
+                  <li class="nav-divider"></li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'unit:list' %}">Единицы измерения</a>
+                  </li>
+                  <li class="nav-item"><a class="nav-link i" href="{% url 'unit:case_list' %}">Тип кейса</a>
+                  </li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Регионы</a></li>
+                  <li class="nav-item"><a class="nav-link i" href="#">Производители</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Типы оплат</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Скидки/Наценки</a></li>
                   <li class="nav-item"><a class="nav-link i" href="#">Соотношения цен</a></li>

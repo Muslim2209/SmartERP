@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+  <br>
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <h6>Case type</h6>
+        <div class="row">
+          <div class="col-md-4">
+            <a class="btn btn-success" href="{% url 'unit:case_add' %}">Add</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card-body">
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>
+              <input type="checkbox" id="selectAll"/>
+            </th>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Short Name</th>
+            <th scope="col">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for case in case_list %}
+            <tr class="click-row" data-href="{% url 'unit:case_edit' case.id %}">
+              <td>
+                <input type="checkbox" id="{{ case.id }}"/>
+              </td>
+              <td>{{ case.id }}</td>
+              <td>{{ case.name }}</td>
+              <td>{{ case.short_name|default_if_none:"" }}</td>
+              <td>{% if case.is_active %}Active{% else %}Inactive{% endif %}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

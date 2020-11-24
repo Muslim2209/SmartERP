@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import F
 from django.utils import timezone
 
 from tools.config import CONSTANTS
@@ -15,50 +16,54 @@ class Warehouse(models.Model):
         return self.name
 
 
-class WarehouseInput(models.Model):
-    number = models.IntegerField()
-    warehouse = models.ForeignKey('Warehouse', on_delete=models.PROTECT, related_name='inputs')
-    vendor = models.ForeignKey('reference.Vendor', on_delete=models.PROTECT, related_name='inputs', null=True,
-                               blank=True)
-    note = models.CharField(max_length=640, null=True, blank=True)
-    input_date = models.DateTimeField(default=timezone.now)
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=64, choices=CONSTANTS.WAREHOUSE.INPUT_STATUS.CHOICES)
-
-    def __str__(self):
-        return f'№{self.number}'
-
-
-class InputProduct(models.Model):
-    product = models.ForeignKey('product.Product', on_delete=models.PROTECT, related_name='inputs')
-    quantity = models.IntegerField()
-    price = models.DecimalField(decimal_places=4, max_digits=16)
+class Stock(models.Model):
+    product = models.ForeignKey('product.Product', on_delete=models.PROTECT)
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(decimal_places=4, max_digits=20)
     expire_date = models.DateField(null=True, blank=True)
-    wh_input = models.ForeignKey('WarehouseInput', on_delete=models.PROTECT, related_name='products')
-
-    def __str__(self):
-        return f'{self.product.name} - {self.quantity} - {self.wh_input.warehouse.name}'
-
-
-class ProductOut(models.Model):
-    product = models.ForeignKey('product.Product', on_delete=models.PROTECT, related_name='outs')
-    quantity = models.IntegerField()
-    price = models.DecimalField(decimal_places=4, max_digits=16)
-    order = models.ForeignKey('order.OrderItem', on_delete=models.PROTECT, related_name='outs')
-
-    def __str__(self):
-        return f'{self.product.name} - {self.order.amount} - {self.order.price}'
-
-
-class Balance(models.Model):
-    # amount = models.IntegerField()
-    # product = models.ForeignKey('product.Product', on_delete=models.PROTECT, related_name='remains')
-    # warehouse = models.ForeignKey('Warehouse', on_delete=models.PROTECT, related_name='remains')
-    income = models.ForeignKey('InputProduct', on_delete=models.PROTECT, null=True, blank=True)
-    outgo = models.ForeignKey('ProductOut', on_delete=models.PROTECT, null=True, blank=True)
+    warehouse = models.ForeignKey('Warehouse', on_delete=models.PROTECT, related_name='stocks')
+    transaction = models.ForeignKey('ProductTransaction', on_delete=models.CASCADE, related_name='stocks')
+    timestamp = models.DateTimeField(default=timezone.now)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
+    def increase_stock(self, quantity: int, commit: bool = True):
+        self.quantity = F("quantity") + quantity
+        if commit:
+            self.save(update_fields=["quantity"])
+
+    def decrease_stock(self, quantity: int, commit: bool = True):
+        self.quantity = F("quantity") - quantity
+        if commit:
+            self.save(update_fields=["quantity"])
+
     def __str__(self):
-        return f'{self.income} - {self.outgo}'
+        return f'{self.product.name} - {self.quantity}'
+
+
+class ProductTransaction(models.Model):
+    number = models.PositiveIntegerField(null=True, blank=True)
+    transaction_type = models.CharField(max_length=255, choices=CONSTANTS.PRODUCT.TRANSACTION.TYPE.CHOICES)
+    note = models.CharField(max_length=640, null=True, blank=True)
+    warehouse = models.ForeignKey('Warehouse', on_delete=models.PROTECT, related_name='transactions')
+    timestamp = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        pk = self.pk
+        super().save(*args, **kwargs)
+        # print('pk\n', pk)
+        # print('instance\n', self.__dict__)
+        if self.transaction_type in ['NEW', 'ARRIVED']:
+            for item in self.items.all():
+                # print('item\n', item.__dict__)
+                self.stocks.create(product=item.product, quantity=item.quantity,
+                                   price=item.price, warehouse=self.warehouse)
+
+
+class TransactionItem(models.Model):
+    product = models.ForeignKey('product.Product', on_delete=models.CASCADE, related_name='transactions')
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(decimal_places=4, max_digits=20)
+    transaction = models.ForeignKey('ProductTransaction', on_delete=models.CASCADE, related_name='items')

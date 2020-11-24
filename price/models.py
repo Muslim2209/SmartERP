@@ -33,7 +33,7 @@ class Price(models.Model):
 class ProductPrice(models.Model):
     price = models.ForeignKey('price.Price', on_delete=models.PROTECT)
     product = models.ForeignKey('product.Product', on_delete=models.PROTECT, related_name='prices')
-    amount = models.DecimalField(decimal_places=4, max_digits=16)
+    amount = models.DecimalField(decimal_places=4, max_digits=20)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 

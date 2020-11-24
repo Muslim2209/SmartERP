@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+  <br>
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <h6>Warehouse Inputs</h6>
+        <div class="row">
+          <div class="col-md-4">
+            <a class="btn btn-success" href="{% url 'warehouse:stock_input_add' %}">Add</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card-body">
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>
+              <input type="checkbox" id="selectAll"/>
+            </th>
+            <th scope="col">id</th>
+            <th scope="col">№</th>
+            <th scope="col">Warehouse</th>
+            <th scope="col">Created</th>
+            <th scope="col">Note</th>
+            <th scope="col">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for trans in producttransaction_list %}
+            <tr class="click-row" data-href="{% url 'warehouse:stock_input_edit' trans.id %}">
+              <td>
+                <input type="checkbox" id="{{ input.id }}"/>
+              </td>
+              <td>{{ trans.id }}</td>
+              <td>{{ trans.number }}</td>
+              <td>{{ trans.warehouse }}</td>
+              <td>{{ trans.created_date }}</td>
+              <td>{{ trans.note|default_if_none:"" }}</td>
+              <td>{{ trans.status }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

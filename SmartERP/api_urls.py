@@ -26,7 +26,7 @@ urlpatterns = [
     path('product/', include('product.api.urls'), name='api_product'),
     path('reference/', include('reference.api.urls'), name='api_reference'),
     path('unit/', include('unit.api.urls'), name='api_unit'),
-    path('warehouse/', include('warehouse.api.urls'), name='api_warehouse'),
+    path('wh/', include('warehouse.api.urls'), name='api_warehouse'),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col-md-4">
             <a class="btn btn-primary btn-group-vertical save_top">Save</a>
-            <a class="btn btn-default btn-default btn-group-vertical" href="{% url 'warehouse:input_list' %}">Close</a>
+            <a class="btn btn-default btn-default btn-group-vertical" href="{% url 'warehouse:stock_input_list' %}">Close</a>
           </div>
         </div>
       </div>
@@ -17,9 +17,9 @@
           {% csrf_token %}
           {{ form.as_p }}
           <table class="table table-hover table-striped table-bordered">
-            {{ inputs.management_form }}
+            {{ transactions.management_form }}
 
-            {% for form in inputs.forms %}
+            {% for form in transactions.forms %}
               {% if forloop.first %}
                 <thead>
                 <tr>
@@ -56,7 +56,7 @@
       $('.formset_row').formset({
           addText: 'Add',
           deleteText: 'X',
-          prefix: 'products'
+          prefix: 'items'
       });
   </script>
 {% endblock content %}
