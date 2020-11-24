@@ -1,5 +1,5 @@
 from django.db import transaction
-from django.db.models import Sum
+from django.db.models import Sum, Q
 from django.urls import reverse_lazy, resolve
 from django.views.generic import ListView, CreateView, UpdateView
 
@@ -31,12 +31,15 @@ class StockListView(ListView):
         details = self.kwargs.get('details')
         context['details_url'] = resolve(self.request.path_info).url_name == 'stock_list_details'
         if details:
-            context['stock_list'] = Stock.objects.values('product__name').annotate(quantity=Sum('quantity'),
+            context['stock_list'] = Stock.objects.values('product__name').annotate(quantities=Sum('quantity'),
                                                                                    product=F('product__name'),
+                                                                                   booked=Sum('quantity', filter=Q(
+                                                                                       status='BOOKED')),
                                                                                    warehouse=F('warehouse__name'))
         else:
             context['stock_list'] = Stock.objects.values('product__name').annotate(quantity=Sum('quantity'),
                                                                                    product=F('product__name'))
+        print('context:\n', context['stock_list'])
         return context
 
 

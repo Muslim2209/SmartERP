@@ -23,6 +23,7 @@ class Stock(models.Model):
     expire_date = models.DateField(null=True, blank=True)
     warehouse = models.ForeignKey('Warehouse', on_delete=models.PROTECT, related_name='stocks')
     transaction = models.ForeignKey('ProductTransaction', on_delete=models.CASCADE, related_name='stocks')
+    status = models.CharField(max_length=255, choices=CONSTANTS.WAREHOUSE.STOCK.STATUS.CHOICES)
     timestamp = models.DateTimeField(default=timezone.now)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -43,7 +44,7 @@ class Stock(models.Model):
 
 class ProductTransaction(models.Model):
     number = models.PositiveIntegerField(null=True, blank=True)
-    transaction_type = models.CharField(max_length=255, choices=CONSTANTS.PRODUCT.TRANSACTION.TYPE.CHOICES)
+    transaction_type = models.CharField(max_length=255, choices=CONSTANTS.WAREHOUSE.TRANSACTION.TYPE.CHOICES)
     note = models.CharField(max_length=640, null=True, blank=True)
     warehouse = models.ForeignKey('Warehouse', on_delete=models.PROTECT, related_name='transactions')
     timestamp = models.DateTimeField(default=timezone.now)

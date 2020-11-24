@@ -35,9 +35,12 @@
                 <td>{{ remain.warehouse }}</td>
               {% endif %}
               <td>{{ remain.product__name }}</td>
-              <td>{{ remain.quantity }}</td>
-              <td>{{ remain.quantity }}</td>
-              <td>{{ remain.quantity }}</td>
+              <td>{{ remain.quantities }}</td>
+              <td>{{ remain.booked|default_if_none:"" }}</td>
+              <td> {% if remain.booked %}
+                {{ remain.quantities|sub:remain.booked }}{% else %}
+                {{ remain.quantities }}{% endif %}
+              </td>
             </tr>
           {% endfor %}
           </tbody>

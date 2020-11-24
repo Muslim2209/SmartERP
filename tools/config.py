@@ -91,7 +91,6 @@ class CONSTANTS:
                 (ACCEPTED, _('Accepted')),
             )
 
-    class PRODUCT:
         class TRANSACTION:
             class TYPE:
                 SOLD = 'SOLD'
@@ -104,4 +103,14 @@ class CONSTANTS:
                     (BOOKED, _('Booked')),
                     (NEW, _('New')),
                     (ARRIVED, _('Arrived')),
+                )
+
+        class STOCK:
+            class STATUS:
+                BOOKED = 'BOOKED'
+                FREE = 'FREE'
+
+                CHOICES = (
+                    (BOOKED, _('Booked')),
+                    (FREE, _('Free')),
                 )
