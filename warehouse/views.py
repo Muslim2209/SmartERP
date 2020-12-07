@@ -37,7 +37,9 @@ class StockListView(ListView):
                                                                                        status='BOOKED')),
                                                                                    warehouse=F('warehouse__name'))
         else:
-            context['stock_list'] = Stock.objects.values('product__name').annotate(quantity=Sum('quantity'),
+            context['stock_list'] = Stock.objects.values('product__name').annotate(quantities=Sum('quantity'),
+                                                                                   booked=Sum('quantity', filter=Q(
+                                                                                       status='BOOKED')),
                                                                                    product=F('product__name'))
         print('context:\n', context['stock_list'])
         return context
